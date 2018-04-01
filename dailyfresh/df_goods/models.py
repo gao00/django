@@ -24,4 +24,3 @@ class GoodsInfo(models.Model):
         return self.gtitle.encode('utf-8')
 
 
-

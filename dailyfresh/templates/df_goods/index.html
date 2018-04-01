@@ -50,10 +50,10 @@
 			<div class="subtitle fl">
 				<span>|</span>
 				{%for g in type01%}
-				<a href="/{{g.id}}/">{{g.gtitle|slice:'10'}}</a>
+				<a href="/goods/{{g.id}}/">{{g.gtitle|slice:'10'}}</a>
 				{%endfor%}
 			</div>
-			<a href="list1_1_1" class="goods_more fr" id="fruit_more">查看更多 ></a>
+			<a href="/goods/list1_1_1" class="goods_more fr" id="fruit_more">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
@@ -61,8 +61,8 @@
 			<ul class="goods_list fl">
 				{%for g in type0%}
 				<li>
-					<h4><a href="/{{g.id}}/">{{g.gtitle|slice:'10'}}</a></h4>
-					<a href="/{{g.id}}/"><img src="/static/{{g.gpic}}/"></a>
+					<h4><a href="/goods/{{g.id}}/">{{g.gtitle|slice:'10'}}</a></h4>
+					<a href="/goods/{{g.id}}/"><img src="/static/{{g.gpic}}/"></a>
 					<div class="prize">¥ {{g.gprice}}</div>
 				</li>
 				{%endfor%}

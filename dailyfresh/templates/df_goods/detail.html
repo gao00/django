@@ -17,21 +17,34 @@
 	}
 	$(function (){
 		$('.num_show').blur(function (){
-			num=parseFloat($('.num_show').val());
+			num=parseInt($('.num_show').val());
 			price=parseFloat($('#gprice').text());
 			total=num*price;
+			$('.num_show').val(num);
 			$('#gtotal').text(total.toFixed(2)+'元');
 		});
 	});
 	$(function (){
 		$('.num_show').blur(function (){
-			if ($('.num_show').val()<1){
+			if ($('.num_show').val()<1||$('.num_show').val()=='NaN'){
 				$('.num_show').val(1)
 				price=parseFloat($('#gprice').text());
 				$('#gtotal').text(price.toFixed(2)+'元')
 			}
+			else if($('.num_show').val()>999){
+			    $('.num_show').val(999)
+				price=parseFloat($('#gprice').text());
+				total=999*price;
+				$('#gtotal').text(total.toFixed(2)+'元');
+			}
 		});
 	});
+	function add_cart() {
+		$.get('/cart_'+{{g.id}}+'_'+parseInt($('.num_show').val())+'/',function (data) {
+			$('#show_count').text(data.count)
+        });
+
+    }
 
 </script>
 {%endblock head%}
@@ -88,8 +101,16 @@
 			</div>
 			<div class="total">总价：<em id="gtotal">{{g.gprice}}元</em></div>
 			<div class="operate_btn">
-				<a href="javascript:;" class="buy_btn">立即购买</a>
-				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
+				{% if request.session.user_name|default:'' != '' %}
+					<a href="javascript:;" class="buy_btn" id="buy_btn">立即购买</a>
+				{% else %}
+					<a href="/user/login/" class="buy_btn" id="buy_btn">立即购买</a>
+				{% endif %}
+				{% if request.session.user_name|default:'' != '' %}
+					<a href="javascript:add_cart();" class="add_cart" id="add_cart">加入购物车</a>
+				{% else %}
+					<a href="/user/login/" class="add_cart" id="add_cart">加入购物车</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,4 @@
+#coding=utf-8
 """
 Django settings for dailyfresh project.
 
@@ -39,7 +40,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'df_user',
     'df_goods',
+    'df_cart',
     'tinymce',
+    'df_order',
+    'haystack',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,3 +123,14 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'static')
 #    'width': 600,
 #    'height': 400,
 #}
+
+HAYSTACK_CONNECTIONS={
+    'default':{
+        'ENGINE':'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH':os.path.join(BASE_DIR,'whoosh_index'),
+    }
+}
+
+#自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR='haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_SEARCH_RESULTS_PER_PAGE=18

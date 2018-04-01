@@ -162,6 +162,7 @@ html,body{height:100%}
 }
 .breadcrumb a{line-height:40px;color:#37ab40}
 .breadcrumb a:hover{color:#ff8800}
+.breadcrumb div{line-height:40px;color:#37ab40}
 .breadcrumb span{line-height:40px;color:#666;padding:0 5px;}
 
 
@@ -390,6 +391,8 @@ html,body{height:100%}
 
 .settlements .col04{width:14%;text-align:center;float:right;}
 .settlements .col04 a{display:block;height:78px;background-color:#ff3d3d;text-align:center;line-height:78px;color:#fff;font-size:24px}
+.settlements .col04 input{display:block;height:78px;width:100%;background-color:#ff3d3d;text-align:center;line-height:78px;color:#fff;font-size:24px}
+
 
 
 .common_title{width:1200px;margin:20px auto 0;font-size:14px;}
